@@ -1,0 +1,25 @@
+
+
+
+<label for="">Nome Libro</label>
+<!--<input type="text" 
+        class="form-control"
+        (input)="onUpdateBookName($event)">-->
+<input type="text" 
+        class="form-control"
+        [(ngModel)]="bookName">
+        <hr>
+<!--<p>{{ bookName }}</p>-->
+<button type="btn btn primary"
+    [disabled]="!allowNewBook"
+    (click)="onCreateBook()">Aggiungi Libro</button>
+
+<!--<p [innerText]="allowNewBook"></p>-->
+<!--<p>{{ bookCreationStatus }}</p>-->
+<p *ngIf="bookCreated; else noBook">Il libro con codice {{bookName}} è stato inserito!</p>
+<ng-template #noBook>
+    <p>Nessun libro è stato creato</p>
+</ng-template>
+
+
+<app-book *ngFor="let book of books; let i = index"></app-book>
